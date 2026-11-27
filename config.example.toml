@@ -1,0 +1,31 @@
+# Copy to config.toml (gitignored) and edit. Every setting is optional; anything left out
+# uses the built-in default shown here. Use single-quoted strings for Windows paths.
+
+[tools]
+# las2las from LAStools; Trimble Business Center installs a copy at this path
+las2las = 'C:\Program Files\Trimble\Trimble Business Center\Inpho_UAS\bin\las2las64.exe'
+
+[bestfit]
+cell = 0.05           # plane-fit cell size on the reference cloud (m)
+max_samples = 40000   # moving-cloud points used in the fit
+search = 0.15         # max distance from a moving point to a reference plane (m); must exceed the offset
+shared_voxel = 0.20   # voxel size used to find surfaces seen by both clouds (m)
+
+[shift]
+suffix = " SHIFTED"   # appended to output file names by shift_laz.py
+
+[control]
+# Control CSVs (name,north,east,elevation,code) that jxl_setups.py compares against
+# when no --control option is given.
+files = [
+  # 'D:\Survey\Control\site-control-local.csv',
+  # 'D:\Survey\Control\site-control-grid.csv',
+]
+# Name suffixes to ignore when matching control names, e.g. ["_L"] if a file names points "CP1_L"
+name_suffixes = []
+
+[grid_compare]
+big_change = 1.0        # |dz| (m) above which cells are summarised as large change
+spot_separation = 15.0  # minimum distance (m) between spot-check cells
+bands = [[-99, -1], [-1, -0.5], [-0.5, -0.2], [-0.2, -0.05], [-0.05, 0.05], [0.05, 0.2],
+         [0.2, 0.5], [0.5, 1], [1, 2], [2, 4], [4, 99]]   # dz bands (m) for the volume table

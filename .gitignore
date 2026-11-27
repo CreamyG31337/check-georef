@@ -1,0 +1,24 @@
+# local settings and private project material stay out of the repository
+config.toml
+notes/
+archive/
+private/
+
+# survey data
+*.las
+*.laz
+*.e57
+*.rcp
+*.rcs
+*.xyz
+*.jxl
+*.job
+*.vce
+
+__pycache__/
+*.pyc
+
+# README exports
+*README.pdf
+
+.pytest_cache/
